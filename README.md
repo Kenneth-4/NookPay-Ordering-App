@@ -128,9 +128,9 @@ This application uses EmailJS for OTP (One-Time Password) verification. Follow t
 Update the `.env` file with your EmailJS credentials:
 
 ```
-EXPO_PUBLIC_EMAILJS_SERVICE_ID=service_6aipiwl
-EXPO_PUBLIC_EMAILJS_TEMPLATE_ID=template_8bg6o08
-EXPO_PUBLIC_EMAILJS_PUBLIC_KEY=4PTJpGlpUN1X8xAh3
+EXPO_PUBLIC_EMAILJS_SERVICE_ID=service_123456
+EXPO_PUBLIC_EMAILJS_TEMPLATE_ID=template_123456
+EXPO_PUBLIC_EMAILJS_PUBLIC_KEY=12345678910
 ```
 
 ### 5. Testing the OTP System
