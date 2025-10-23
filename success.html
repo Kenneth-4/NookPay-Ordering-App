@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+        }
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #10B981;
+        }
+        h1 {
+            color: #232323;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .button {
+            background-color: #F36514;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #F8943F;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .session-id {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>Payment Successful!</h1>
+        <p>Your payment has been processed successfully. Your order has been placed and is being prepared.</p>
+        <p>Please return to the NookPay app to view your order details.</p>
+        <a href="javascript:window.close();" class="button">Close This Window</a>
+        <div id="session-display" class="session-id"></div>
+    </div>
+
+    <script>
+        // Extract the session ID from URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session');
+        
+        if (sessionId) {
+            document.getElementById('session-display').textContent = 'Session ID: ' + sessionId;
+        }
+        
+        // Auto-close after 5 seconds
+        setTimeout(() => {
+            window.close();
+        }, 5000);
+    </script>
+</body>
+</html> 

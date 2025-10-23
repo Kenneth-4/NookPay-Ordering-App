@@ -182,16 +182,7 @@ export default function ProfileScreen() {
           <Text style={styles.sectionTitle}>Account</Text>
           
           {renderMenuItem('receipt-outline', 'Order History', () => router.push('/transaction-history'))}
-          {renderMenuItem('person-outline', 'Personal Information')}
           {renderMenuItem('ticket-outline', 'Vouchers', () => router.push('/vouchers'))}
-        </Animatable.View>
-
-        <Animatable.View animation="fadeInUp" duration={800} delay={200} style={styles.menuSection}>
-          <Text style={styles.sectionTitle}>Support</Text>
-          
-          {renderMenuItem('help-circle-outline', 'Help Center')}
-          {renderMenuItem('document-text-outline', 'Terms of Service')}
-          {renderMenuItem('shield-checkmark-outline', 'Privacy Policy')}
           {renderMenuItem('settings-outline', 'Settings', () => router.push('/settings'))}
         </Animatable.View>
 

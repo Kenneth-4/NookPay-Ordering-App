@@ -1,0 +1,102 @@
+{
+  "expo": {
+    "name": "NookPay",
+    "slug": "customer-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/nook.png",
+    "scheme": "nookapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "jsEngine": "hermes",
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/your-project-id"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "splash": {
+      "image": "./assets/images/nook.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#763116"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.knt.NookNest",
+      "associatedDomains": [
+        "applinks:foodapp.example.com",
+        "applinks:food-ordering-nook.vercel.app"
+      ],
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "nookapp",
+          "https",
+          "http"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/nook.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.knt.NookNest",
+      "versionCode": 1,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "nookapp"
+            },
+            {
+              "scheme": "https",
+              "host": "food-ordering-nook.vercel.app"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ],
+      "permissions": [
+        "INTERNET"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/nook.png",
+      "assetBundlePatterns": [
+        "**/*"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/nook.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#763116"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    },
+    "extra": {
+      "hcaptchaSiteKey": "d5b2a696-b3e6-4cdc-8b4c-b8d60908dd10",
+      "eas": {
+        "projectId": "c934e361-d4c0-4b2e-8914-0378f2d53be0"
+      }
+    },
+    "owner": "kenneth10"
+  }
+}

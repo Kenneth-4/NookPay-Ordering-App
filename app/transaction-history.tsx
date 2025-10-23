@@ -34,7 +34,7 @@ interface Order {
   items: OrderItem[];
   total: number;
   subtotal?: number;
-  status: 'pending' | 'processing' | 'completed' | 'cancelled';
+  status: 'pending' | 'processing' | 'completed' | 'cancelled' | 'refunded';
   createdAt: any;
   customerName: string;
   customerId: string;
@@ -61,6 +61,7 @@ interface Order {
     discountAmount: number;
     percentage: number;
   };
+  refundReason?: string;
 }
 
 export default function TransactionHistoryScreen() {
@@ -81,7 +82,7 @@ export default function TransactionHistoryScreen() {
     const q = query(
       ordersRef,
       where('customerId', '==', user.uid),
-      where('status', '==', 'completed')
+      where('status', 'in', ['completed', 'cancelled', 'refunded'])
     );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -152,27 +153,21 @@ export default function TransactionHistoryScreen() {
 
   const getStatusColor = (status: Order['status']) => {
     switch (status) {
-      case 'completed':
-        return '#10B981';
-      case 'cancelled':
-        return '#EF4444';
-      case 'processing':
-        return '#F59E0B';
-      default:
-        return '#6366F1';
+      case 'completed': return '#10B981';
+      case 'cancelled': return '#EF4444';
+      case 'refunded': return '#9333EA';
+      case 'processing': return '#F59E0B';
+      default: return '#6366F1';
     }
   };
 
   const getStatusIcon = (status: Order['status']) => {
     switch (status) {
-      case 'completed':
-        return 'check-circle';
-      case 'cancelled':
-        return 'times-circle';
-      case 'processing':
-        return 'clock-o';
-      default:
-        return 'hourglass-start';
+      case 'completed': return 'check-circle';
+      case 'cancelled': return 'times-circle';
+      case 'refunded': return 'undo';
+      case 'processing': return 'clock-o';
+      default: return 'hourglass-start';
     }
   };
 
@@ -245,6 +240,12 @@ export default function TransactionHistoryScreen() {
                 <View style={styles.orderInfo}>
                   <Text style={styles.orderDate}>{formatDate(order.createdAt)}</Text>
                   <Text style={styles.orderId}>Order #{order.id.slice(-6).toUpperCase()}</Text>
+                  {/* Show refund reason if refunded, below order number */}
+                  {order.status === 'refunded' && order.refundReason && (
+                    <Text style={styles.refundReasonText} numberOfLines={2} ellipsizeMode="tail">
+                      Refund Reason: <Text style={{fontStyle: 'italic'}}>{order.refundReason}</Text>
+                    </Text>
+                  )}
                 </View>
                 <View style={[styles.statusContainer, { backgroundColor: getStatusColor(order.status) + '20' }]}>
                   <FontAwesome 
@@ -577,5 +578,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.text.secondary,
     marginTop: 16,
+  },
+  refundReasonText: {
+    color: '#9333EA',
+    fontSize: 13,
+    marginTop: 4,
+    fontStyle: 'italic',
+    fontWeight: '500',
   },
 });

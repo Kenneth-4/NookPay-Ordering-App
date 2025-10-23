@@ -33,7 +33,7 @@ const IMAGE_HEIGHT = SCREEN_WIDTH * 0.8;
 interface Product {
   id: string;
   name: string;
-  price: string;
+  basePrice: string;
   imageUrl: string;
   description: string;
   categoryId: string;
@@ -102,6 +102,8 @@ interface Styles {
   successButton: ViewStyle;
   successButtonGradient: ViewStyle;
   successButtonText: TextStyle;
+  priceContainer: ViewStyle;
+  productPrice: TextStyle;
 }
 
 export default function ProductScreen() {
@@ -171,7 +173,7 @@ export default function ProductScreen() {
         price: parseFloat(
           product.hasSizes && selectedSize 
             ? product.sizes?.[selectedSize]?.price || '0'
-            : product.price
+            : product.basePrice
         ),
         image: product.imageUrl,
         quantity: quantity,
@@ -180,7 +182,7 @@ export default function ProductScreen() {
         totalPrice: parseFloat(
           product.hasSizes && selectedSize 
             ? product.sizes?.[selectedSize]?.price || '0'
-            : product.price
+            : product.basePrice
         ) * quantity,
       };
       
@@ -330,6 +332,12 @@ export default function ProductScreen() {
             <View style={styles.contentContainer}>
               <Text style={styles.productName}>{product.name}</Text>
 
+              {!product.hasSizes && (
+                <View style={styles.priceContainer}>
+                  <Text style={styles.productPrice}>{formatPrice(product.basePrice)}</Text>
+                </View>
+              )}
+
               {product.description && (
                 <View style={styles.descriptionContainer}>
                   <Text style={styles.sectionTitle}>Description</Text>
@@ -397,7 +405,7 @@ export default function ProductScreen() {
                         (parseFloat(
                           product.hasSizes && selectedSize 
                             ? product.sizes?.[selectedSize]?.price || '0'
-                            : product.price
+                            : product.basePrice
                         ) * quantity).toString()
                       )}</Text>
                     )}
@@ -856,5 +864,13 @@ const styles = StyleSheet.create<Styles>({
     fontSize: 16,
     fontWeight: '600',
     color: Colors.white,
+  },
+  priceContainer: {
+    marginBottom: Spacing.lg,
+  },
+  productPrice: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.primary,
   },
 });

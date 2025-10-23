@@ -209,11 +209,11 @@ export default function MyOrderScreen() {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'pending':
-        return '#F59E0B';
+        return '#6B7280';
       case 'processing':
-        return '#4CAF50';
+        return '#3B82F6';
       case 'ready for pickup':
-        return '#2196F3';
+        return '#F59E0B';
       case 'completed':
         return '#059669';
       case 'cancelled':
@@ -461,7 +461,7 @@ export default function MyOrderScreen() {
               style={styles.pickupInstructions}
             >
               <LinearGradient
-                colors={['#2196F3', '#1E88E5']}
+                colors={['#F59E0B', '#F59E0B']}
                 style={styles.pickupGradient}
                 start={[0, 0]}
                 end={[1, 0]}

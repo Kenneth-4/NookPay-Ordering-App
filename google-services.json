@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "785540904852",
+    "project_id": "noooknest",
+    "storage_bucket": "noooknest.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785540904852:android:44ee1d38db8ab0bdc50181",
+        "android_client_info": {
+          "package_name": "com.knt.NookNest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNfg72Faa5vTYxFjWS2FrU_0LzBXjJ2P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
